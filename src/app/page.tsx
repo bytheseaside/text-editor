@@ -36,6 +36,39 @@ export default function Home() {
         [theme.breakpoints.only('xl')]: {
           width: `calc(100% - ${theme.spacing(65)})`,
         },
+        '& ul': {
+        paddingLeft: '20px',
+        listStyleType: 'disc',
+        marginBottom: '16px',
+      },
+      '& ol': {
+        paddingLeft: '20px',
+        listStyleType: 'decimal',
+        marginBottom: '16px',
+      },
+      '& li': {
+        marginBottom: '8px',
+      },
+      '& code': {
+        backgroundColor: '#e0e0e0',
+        padding: '2px 4px',
+        borderRadius: '4px',
+        fontFamily: "'Fira Code', monospace",
+      },
+      '& pre': {
+        backgroundColor: '#1e1e1e',
+        color: '#ffffff',
+        padding: '16px',
+        borderRadius: '8px',
+        fontFamily: "'Fira Code', monospace",
+        overflowX: 'auto',
+      },
+      '& pre code': {
+        backgroundColor: 'transparent',
+        color: 'inherit',
+        padding: 0,
+      },
+
       })}
     >
       <EditorProvider
