@@ -47,7 +47,22 @@ export default function Home() {
         }
         extensions={[StarterKit]}
         content={marked(info)}
-      />
+        editorContainerProps={{
+          style: {
+            padding: '24px', // General padding for the editor
+            backgroundColor: '#ffffff', // Editor background color
+            border: '1px solid #e0e0e0', // Border for the editor
+            borderRadius: '8px', // Rounded corners
+            lineHeight: '1.6', // Better readability
+            fontFamily: 'Arial, sans-serif', // Editor font
+            color: '#333333', // Text color
+            overflowY: 'auto', // Scroll behavior if content overflows
+            maxHeight: '600px', // Maximum height for the editor
+          },
+        }}
+      >
+        <CustomFloatingMenu getNewText={() => '*Some* more **text** to add - mock text'} />
+      </EditorProvider>
     </Box>
   );
 }

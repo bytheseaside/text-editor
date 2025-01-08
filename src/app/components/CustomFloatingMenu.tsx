@@ -3,10 +3,11 @@ import { FloatingMenu, useCurrentEditor } from '@tiptap/react'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import { BaseComponentPropType } from '../types/BaseComponentPropType'
+import { marked } from 'marked'
 
 type Props = BaseComponentPropType & {
-  // string containing the HTML of the new text to be inserted
-  getNewText: () => Promise<string>;
+  // string containing the new text to be inserted
+  getNewText: () => string;
 }
 
 const CustomFloatingMenu: React.FC<Props> = ({ getNewText }) => {
@@ -29,8 +30,8 @@ const CustomFloatingMenu: React.FC<Props> = ({ getNewText }) => {
         <Button
           variant="contained"
           onClick={() => {
-            getNewText()
-              .then(n => editor.commands.insertContent(n))
+            const newText = getNewText()
+            editor.commands.insertContent(marked(newText))
           }}
           sx={{
             width: '100%', 
@@ -43,7 +44,7 @@ const CustomFloatingMenu: React.FC<Props> = ({ getNewText }) => {
             
           }}
         >
-          Get more text
+          + TEXT
         </Button>
       </Box>
     </FloatingMenu>
