@@ -1,5 +1,6 @@
 'use client'
 
+import { marked } from 'marked';
 import { useState } from "react";
 import { EditorProvider, FloatingMenu, BubbleMenu } from '@tiptap/react'
 import Box from '@mui/material/Box'
@@ -9,27 +10,8 @@ import MenuBar from "./components/MenuBar";
 const URL = 'https://backend.app.qanswer.ai/api/tasks/report-copilot/report-continuation'
 
 export default function Home() {
-  const [info, setInfo] = useState(`
-    <h1>Editor Styles</h1>
-    <p>Here you can test all the styles applied from the menu bar:</p>
-    <h2>Heading 2</h2>
-    <p>This is a <em>italicized</em> text, and here is a <strong>bold</strong> text.</p>
-    <p>Here is a <code>console.log()</code> statement:</p>
-    <pre><code>
-      const foo = 'bar';
-    </code></pre>
-    <hr />
-    <ul>
-      <li>List item 1</li>
-      <li>List item 2</li>
-    </ul>
-    <ol>
-      <li>Ordered list item 1</li>
-      <li>Ordered list item 2</li>
-    </ol>
-    <p><em>Emphasized</em> and <strong>strong</strong> text in paragraphs.</p>
-`);
-
+  const [info, setInfo] = useState('# Editor Styles \nHere you can test all the styles applied from the menu bar: \n## Heading 2 \nThis is an *italicized* text, and here is a **bold** text. \nHere is a `console.log()` statement: \n```\nconst foo = \'bar\';\n```\n---\n- List item 1\n- List item 2\n\n1. Ordered list item 1\n2. Ordered list item 2\n\n*Emphasized* and **strong** text in paragraphs.')
+  
   return (
     <Box
       sx={(theme) => ({
@@ -60,14 +42,11 @@ export default function Home() {
     >
       <EditorProvider
         slotBefore={
-          <MenuBar
-            sx={{
-              // backgroundColor: 'background.default',
-              // padding: 2,
-            }}
-          />
+          <MenuBar />
         }
-        extensions={[StarterKit]} content={info} />
+        extensions={[StarterKit]}
+        content={marked(info)}
+      />
     </Box>
   );
 }
