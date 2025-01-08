@@ -38,7 +38,7 @@ const MenuBarChip: React.FC<Props> = (
           backgroundColor: '#B0B0B0',
           color: 'background.paper',
         },
-        padding: '8px 16px',
+        padding: { xs:'4px 12px', sm:'8px 16px' },
         minWidth: '90px',
         textTransform: 'none',
         ...(isActive() ? {
