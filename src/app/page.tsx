@@ -1,95 +1,73 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+
+import { useState } from "react";
+import { EditorProvider, FloatingMenu, BubbleMenu } from '@tiptap/react'
+import Box from '@mui/material/Box'
+import StarterKit from "@tiptap/starter-kit";
+import MenuBar from "./components/MenuBar";
+
+const URL = 'https://backend.app.qanswer.ai/api/tasks/report-copilot/report-continuation'
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [info, setInfo] = useState(`
+    <h1>Editor Styles</h1>
+    <p>Here you can test all the styles applied from the menu bar:</p>
+    <h2>Heading 2</h2>
+    <p>This is a <em>italicized</em> text, and here is a <strong>bold</strong> text.</p>
+    <p>Here is a <code>console.log()</code> statement:</p>
+    <pre><code>
+      const foo = 'bar';
+    </code></pre>
+    <hr />
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+    </ul>
+    <ol>
+      <li>Ordered list item 1</li>
+      <li>Ordered list item 2</li>
+    </ol>
+    <p><em>Emphasized</em> and <strong>strong</strong> text in paragraphs.</p>
+`);
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+  return (
+    <Box
+      sx={(theme) => ({
+        background: 'background.default',
+        width: '100%',
+        minWidth: '320px',
+        maxWidth: '1800px',
+        margin: '0 auto',
+        [theme.breakpoints.only('xs')]: {
+          paddingLeft: theme.spacing(4),
+          paddingRight: theme.spacing(4),
+        },
+        [theme.breakpoints.only('sm')]: {
+          paddingLeft: theme.spacing(6),
+          paddingRight: theme.spacing(6),
+        },
+        [theme.breakpoints.only('md')]: {
+          paddingLeft: theme.spacing(8),
+          paddingRight: theme.spacing(8),
+        },
+        [theme.breakpoints.only('lg')]: {
+          width: `calc(100% - ${theme.spacing(56)})`,
+        },
+        [theme.breakpoints.only('xl')]: {
+          width: `calc(100% - ${theme.spacing(65)})`,
+        },
+      })}
+    >
+      <EditorProvider
+        slotBefore={
+          <MenuBar
+            sx={{
+              // backgroundColor: 'background.default',
+              // padding: 2,
+            }}
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        }
+        extensions={[StarterKit]} content={info} />
+    </Box>
   );
 }
