@@ -41,9 +41,12 @@ const CustomFloatingMenu: React.FC = () => {
         console.error('API response did not contain continuation');
         return;
       }
+      console.log('Continuation MD:', continuationMarkdown);
+      const continuationHTML = marked(
+        continuationMarkdown.replace(/<sup[^>]*>/g, '').replace(/<\/sup>/g, '')
+      );
 
-      const continuationHTML = marked(continuationMarkdown.replace(/<sup[^>]*>[^<]*<\/sup>/g, ''));
-
+      console.log('Continuation HTML:', continuationHTML);
       editor.commands.insertContent(continuationHTML);
     } catch (error) {
       console.error('Error fetching continuation:', error);
