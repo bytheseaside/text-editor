@@ -72,6 +72,7 @@ export default function Home() {
       })}
     >
       <EditorProvider
+        immediatelyRender={false}
         slotBefore={
           <MenuBar />
         }
