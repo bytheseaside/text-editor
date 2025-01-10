@@ -38,38 +38,41 @@ export default function Home() {
           width: `calc(100% - ${theme.spacing(65)})`,
         },
         '& ul': {
-        paddingLeft: '20px',
-        listStyleType: 'disc',
-        marginBottom: '16px',
-      },
-      '& ol': {
-        paddingLeft: '20px',
-        listStyleType: 'decimal',
-        marginBottom: '16px',
-      },
-      '& li': {
-        marginBottom: '8px',
-      },
-      '& code': {
-        backgroundColor: '#e0e0e0',
-        padding: '2px 4px',
-        borderRadius: '4px',
-        fontFamily: "'Fira Code', monospace",
-      },
-      '& pre': {
-        backgroundColor: '#1e1e1e',
-        color: '#ffffff',
-        padding: '16px',
-        borderRadius: '8px',
-        fontFamily: "'Fira Code', monospace",
-        overflowX: 'auto',
-      },
-      '& pre code': {
-        backgroundColor: 'transparent',
-        color: 'inherit',
-        padding: 0,
-      },
-
+          paddingLeft: '20px',
+          listStyleType: 'disc',
+          marginBottom: '16px',
+        },
+        '& ol': {
+          paddingLeft: '20px',
+          listStyleType: 'decimal',
+          marginBottom: '16px',
+        },
+        '& li': {
+          marginBottom: '8px',
+        },
+        '& code': {
+          backgroundColor: '#e0e0e0',
+          padding: '2px 4px',
+          borderRadius: '4px',
+          fontFamily: "'Fira Code', monospace",
+        },
+        '& pre': {
+          backgroundColor: '#1e1e1e',
+          color: '#ffffff',
+          padding: '16px',
+          borderRadius: '8px',
+          fontFamily: "'Fira Code', monospace",
+          overflowX: 'auto',
+        },
+        '& pre code': {
+          backgroundColor: 'transparent',
+          color: 'inherit',
+          padding: 0,
+        },
+        '& .ProseMirror:focus': {
+          outline: 'none', // Removes the default focus outline
+          boxShadow: 'none', // Removes any default box-shadow
+        },
       })}
     >
       <EditorProvider
@@ -86,6 +89,7 @@ export default function Home() {
         content={marked(startText)}
         editorContainerProps={{
           style: {
+            minHeight: '400px', // Minimum height for the editor
             padding: '24px', // General padding for the editor
             backgroundColor: '#ffffff', // Editor background color
             border: '1px solid #e0e0e0', // Border for the editor
