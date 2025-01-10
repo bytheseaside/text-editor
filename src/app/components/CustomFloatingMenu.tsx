@@ -3,7 +3,7 @@ import { FloatingMenu, useCurrentEditor } from '@tiptap/react';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import TurndownService from 'turndown';
-import { marked } from 'marked'; // Import marked to convert Markdown to HTML
+import { marked } from 'marked';
 
 const CustomFloatingMenu: React.FC = () => {
   const { editor } = useCurrentEditor();
@@ -42,9 +42,8 @@ const CustomFloatingMenu: React.FC = () => {
         return;
       }
 
-      const continuationHTML = marked(continuationMarkdown);
+      const continuationHTML = marked(continuationMarkdown.replace(/<sup[^>]*>[^<]*<\/sup>/g, ''));
 
-      // Step 6: Append the continuation HTML to the editor content
       editor.commands.insertContent(continuationHTML);
     } catch (error) {
       console.error('Error fetching continuation:', error);

@@ -8,8 +8,8 @@ import MenuBar from "./components/MenuBar";
 import CustomFloatingMenu from './components/CustomFloatingMenu';
 
 export default function Home() {
-  const startText = '# Editor Styles \nHere you can test all the styles applied from the menu bar: \n## Heading 2 \nThis is an *italicized* text, and here is a **bold** text. \nHere is a `console.log()` statement: \n```\nconst foo = \'bar\';\n```\n---\n- List item 1\n- List item 2\n\n1. Ordered list item 1\n2. Ordered list item 2\n\n*Emphasized* and **strong** text in paragraphs.'
-
+  const startText = '# How to sign up: step by step'
+  
   return (
     <Box
       sx={(theme) => ({
