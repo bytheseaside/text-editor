@@ -81,7 +81,6 @@ export default function Home() {
           StarterKit,
           Link.configure({
             openOnClick: true,
-            // linkTarget: '_blank',
           }),
         ]}
         content={marked(startText)}
