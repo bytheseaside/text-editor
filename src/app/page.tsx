@@ -91,7 +91,7 @@ export default function Home() {
           },
         }}
       >
-        <CustomFloatingMenu getNewText={() => '*Some* more **text** to add - mock text'} />
+        <CustomFloatingMenu/>
       </EditorProvider>
     </Box>
   );
