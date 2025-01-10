@@ -1,6 +1,7 @@
 'use client'
 
 import { marked } from 'marked';
+import { Link } from '@tiptap/extension-link';
 import { EditorProvider } from '@tiptap/react'
 import Box from '@mui/material/Box'
 import StarterKit from "@tiptap/starter-kit";
@@ -76,7 +77,13 @@ export default function Home() {
         slotBefore={
           <MenuBar />
         }
-        extensions={[StarterKit]}
+        extensions={[
+          StarterKit,
+          Link.configure({
+            openOnClick: true,
+            // linkTarget: '_blank',
+          }),
+        ]}
         content={marked(startText)}
         editorContainerProps={{
           style: {
